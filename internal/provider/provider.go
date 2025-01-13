@@ -98,7 +98,7 @@ func (p *AikidoProvider) Configure(ctx context.Context, req provider.ConfigureRe
 	if clientId == "" {
 		resp.Diagnostics.AddAttributeError(
 			path.Root("client_id"),
-			"Missing HashiCups API Client Id",
+			"Missing Aikido API Client Id",
 			"The provider cannot create the Aikido API client as there is a missing or empty value for the Aikido API client id. "+
 				"Set the client id value in the configuration or use the AIKIDO_CLIENT_ID environment variable. "+
 				"If either is already set, ensure the value is not empty.",
@@ -108,7 +108,7 @@ func (p *AikidoProvider) Configure(ctx context.Context, req provider.ConfigureRe
 	if clientSecret == "" {
 		resp.Diagnostics.AddAttributeError(
 			path.Root("client_secret"),
-			"Missing HashiCups API Client Secret",
+			"Missing Aikido API Client Secret",
 			"The provider cannot create the Aikido API client as there is a missing or empty value for the Aikido API client secret. "+
 				"Set the client secret value in the configuration or use the AIKIDO_CLIENT_SECRET environment variable. "+
 				"If either is already set, ensure the value is not empty.",
@@ -129,7 +129,9 @@ func (p *AikidoProvider) Resources(ctx context.Context) []func() resource.Resour
 }
 
 func (p *AikidoProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{}
+	return []func() datasource.DataSource{
+		NewUsersDataSource,
+	}
 }
 
 func (p *AikidoProvider) Functions(ctx context.Context) []func() function.Function {

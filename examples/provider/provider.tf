@@ -8,4 +8,8 @@ terraform {
 
 provider "aikido" {}
 
-data "aikido_example" "all" {}
+data "aikido_users" "all" {}
+
+output "out" {
+  value       = data.aikido_users.all
+}
