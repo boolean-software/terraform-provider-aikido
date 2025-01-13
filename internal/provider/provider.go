@@ -17,11 +17,9 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-// Ensure ScaffoldingProvider satisfies various provider interfaces.
 var _ provider.Provider = &AikidoProvider{}
 var _ provider.ProviderWithFunctions = &AikidoProvider{}
 
-// AikidoProvider defines the provider implementation.
 type AikidoProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
@@ -29,7 +27,6 @@ type AikidoProvider struct {
 	version string
 }
 
-// AikidoProviderModel describes the provider data model.
 type AikidoProviderModel struct {
 	ClientId     types.String `tfsdk:"client_id"`
 	ClientSecret types.String `tfsdk:"client_secret"`
@@ -128,21 +125,15 @@ func (p *AikidoProvider) Configure(ctx context.Context, req provider.ConfigureRe
 }
 
 func (p *AikidoProvider) Resources(ctx context.Context) []func() resource.Resource {
-	return []func() resource.Resource{
-		NewExampleResource,
-	}
+	return []func() resource.Resource{}
 }
 
 func (p *AikidoProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{
-		NewExampleDataSource,
-	}
+	return []func() datasource.DataSource{}
 }
 
 func (p *AikidoProvider) Functions(ctx context.Context) []func() function.Function {
-	return []func() function.Function{
-		NewExampleFunction,
-	}
+	return []func() function.Function{}
 }
 
 func New(version string) func() provider.Provider {
