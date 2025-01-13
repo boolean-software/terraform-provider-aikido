@@ -1,4 +1,4 @@
-module github.com/hashicorp/terraform-provider-scaffolding-framework
+module github.com/boolean-software/terraform-provider-aikido
 
 go 1.22.7
 
