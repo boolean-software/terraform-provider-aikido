@@ -125,7 +125,9 @@ func (p *AikidoProvider) Configure(ctx context.Context, req provider.ConfigureRe
 }
 
 func (p *AikidoProvider) Resources(ctx context.Context) []func() resource.Resource {
-	return []func() resource.Resource{}
+	return []func() resource.Resource{
+		NewTeamResource,
+	}
 }
 
 func (p *AikidoProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
